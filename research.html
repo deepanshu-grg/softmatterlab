@@ -12,7 +12,6 @@
 </head>
 <body class="page-wrapper">
 
-<!-- Preloader Overlay -->
 <div id="preloader">
   <div class="preloader-content">
     <img src="images/favicon.png" alt="Lab Logo" class="preloader-logo">
@@ -37,7 +36,6 @@
 <div id="footer-placeholder"></div>
 
 <script>
-  // Hide preloader helper
   function hidePreloader() {
     const preloader = document.getElementById('preloader');
     if (preloader && !preloader.classList.contains('hidden')) {
@@ -45,8 +43,7 @@
       setTimeout(() => preloader.style.display = 'none', 400);
     }
   }
-
-  // Load Research Cards
+  
   const researchPromise = fetch('data/research.json')
     .then(res => res.json())
     .then(data => {
@@ -61,7 +58,6 @@
         </div>
       `).join('');
       
-      // Accordion Logic
       container.addEventListener('click', function(e) {
         const clickedCard = e.target.closest('.research-card');
         if (!clickedCard) return;
@@ -76,7 +72,6 @@
       document.getElementById('research-container').innerHTML = '<p style="grid-column: 1/-1;">Failed to load research data.</p>';
     });
 
-  // Load Navigation
   const navPromise = fetch('nav.html')
     .then(r => r.text())
     .then(data => {
@@ -91,7 +86,6 @@
     })
     .catch(err => console.error('Error loading navigation:', err));
 
-  // Load Footer
   const footerPromise = fetch('footer.html')
     .then(r => r.text())
     .then(data => { 
@@ -99,7 +93,6 @@
     })
     .catch(err => console.error('Error loading footer:', err));
 
-  // Preloader Resolution
   const windowLoadPromise = new Promise(resolve => window.addEventListener('load', resolve));
 
   Promise.all([windowLoadPromise, researchPromise, navPromise, footerPromise])
