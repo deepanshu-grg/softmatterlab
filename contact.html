@@ -12,7 +12,6 @@
 </head>
 <body class="page-wrapper">
 
-<!-- Preloader Overlay -->
 <div id="preloader">
   <div class="preloader-content">
     <img src="images/favicon.png" alt="Lab Logo" class="preloader-logo">
@@ -31,7 +30,6 @@
 
   <div class="contact-grid">
     
-    <!-- Location Card (Clickable to Google Maps) -->
     <a href="https://maps.google.com/?q=Ashoka+University+Sonipat+Haryana+131029" 
        target="_blank" 
        rel="noopener noreferrer" 
@@ -48,7 +46,6 @@
       </div>
     </a>
 
-    <!-- Email Card (Clickable to Mail App) -->
     <a href="mailto:smr.phy@ashoka.edu.in" 
        class="contact-card contact-card-link">
       <div class="contact-icon">
@@ -70,7 +67,6 @@
 <div id="footer-placeholder"></div>
 
 <script>
-  // Hide preloader helper
   function hidePreloader() {
     const preloader = document.getElementById('preloader');
     if (preloader && !preloader.classList.contains('hidden')) {
@@ -78,8 +74,7 @@
       setTimeout(() => preloader.style.display = 'none', 400);
     }
   }
-
-  // Load Navigation
+  
   const navPromise = fetch('nav.html')
     .then(r => r.text())
     .then(data => {
@@ -94,7 +89,6 @@
     })
     .catch(err => console.error('Error loading navigation:', err));
 
-  // Load Footer
   const footerPromise = fetch('footer.html')
     .then(r => r.text())
     .then(data => { 
@@ -102,7 +96,6 @@
     })
     .catch(err => console.error('Error loading footer:', err));
 
-  // Preloader Resolution
   const windowLoadPromise = new Promise(resolve => window.addEventListener('load', resolve));
 
   Promise.all([windowLoadPromise, navPromise, footerPromise])
